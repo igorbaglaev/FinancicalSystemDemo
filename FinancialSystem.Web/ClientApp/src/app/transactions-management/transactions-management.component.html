@@ -1,0 +1,28 @@
+<div>
+    <form [formGroup]="addTransaction">
+  
+      <div class="input-group mb-3">
+        <select formControlName="type">
+          <option value="1">Credit</option>
+          <option value="2">Debit</option>
+        </select>
+        <input formControlName="amount"
+               type="number"
+               class="form-control"
+               placeholder="Amount"
+               aria-label="Amount"
+               aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary"
+                  type="button"
+                  (click)="onSubmit()"
+                  [disabled]="!this.addTransaction.valid">
+            Sumbit
+          </button>
+        </div>
+      </div>
+  
+    </form>
+  </div>
+  
+<app-transactions-table #transactionsTable></app-transactions-table>

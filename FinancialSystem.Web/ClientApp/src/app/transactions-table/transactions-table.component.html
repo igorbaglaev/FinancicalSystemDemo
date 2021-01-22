@@ -1,0 +1,27 @@
+<h1 id="tableLabel">Transactions History</h1>
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>Transaction Id</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>UTC Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.id }}</td>
+      <td>
+        <span class="text-success" *ngIf="transaction.type == 1"><b>Credit</b></span>
+        <span class="text-danger" *ngIf="transaction.type == 2"><b>Debit</b></span>
+      </td>
+      <td>
+        <span *ngIf="transaction.type == 1">+</span>
+        <span *ngIf="transaction.type == 2">-</span>
+        {{ transaction.amount }}
+      </td>
+      <td>{{ transaction.effectiveDate | date : 'yyyy-MM-dd HH:mm:ss zzzz' }}</td>
+    </tr>
+  </tbody>
+</table>
